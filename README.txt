@@ -24,7 +24,13 @@ python3 hellow.py
 
 5. Stop instance
 
-
+6. Restart
+6.1. Sing in to Oracle Cloud "illyakorotun" https://www.oracle.com/ca-en/cloud/sign-in.html
+6.2. Open instance in Dashboard -> Compute-> Instances
+6.3. Start
+6.4. Run ssh connection in PowerShell
+ssh -i .\.ssh\ssh-key-instance-20231005-2117.key opc@192.18.148.37
+6.5. Stop instance
 
 
 
