@@ -1,7 +1,7 @@
 1. Create account on https://www.oracle.com/ca-en/cloud/free/
 1.1 Start for free
 2. Create Compute instances Dashboard->Compute->instances
-2.1. Download SSH key pair (private and public key) and to .ssh folder
+2.1. Download SSH key pair (private and public key) and to .ssh folder and chenge owner to only one user in security file opption
 2.1.1. Rename ssh key, adding instance name into ssh name.
 2.2. Create
 3. Instance dashboards Compute->Instances->Instance details->Work request
@@ -58,6 +58,8 @@ docker info
 docker run hello-world
 7.8. Check downloaded images
 docker images
+7.9 Check docker running containers
+docker ps
 
 8. Docker Compose
 8.1. Install curl utility
@@ -73,4 +75,46 @@ docker-compose --version
 systemctl stop docker
 dnf remove docker-ce -y
 rm -rf /usr/local/bin/docker-compose
+
+10. Copy file 
+10.1 Create directory /var/www
+10.2 Change directory mode  to give read, write, and execute to everyone. 
+chmod ugo+rwx foldername
+10.3 Copy file index.html
+ scp -i .\.ssh\ssh-key-instance-20231005-2117.key index.html opc@192.18.148.37:/var/www
+
+11. Docker images hub
+hub.docker.com
+11.1 Found Apache http server httpd
+11.2 Create Dockerfile in the project
+vim Dockerfile
+11.3 Add in Dockerfile
+FROM httpd
+COPY ./public-html/ /usr/local/apache2/htdocs/
+11.4. Save and exit from editor
+:wq!
+
+12.1 Build Docker image
+docker build -t website .
+12.2 List of Docker images
+docker images
+12.3 Create running Docker container
+docker run -itd -p 80:80 --name website website
+12.4 Show running container list
+docker ps
+12.5  Add or Change Ingress Rulles in  Oracle Cloud->Dashboard->Networking->Virtual cloud networking->Security List Details->Ingress Rulles
+Statelesss - unchecked
+Source Type: CIDR
+Source CIDR: 0.0.0.0/0
+IP Protocol: TCP
+Source Port Range: All
+Destination Port Range: 80
+Desctiption: Allow incoming requests from any IP addresses to port 80 - that will be mapped to the Docker Container.
+
+
+
+
+12.6 access to container with public IP
+
+????? https://medium.com/oracledevs/run-always-free-docker-container-on-oracle-cloud-infrastructure-c88e36b65610
 
