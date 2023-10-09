@@ -8,7 +8,7 @@
 3.1. Start Instance
 3.2. Copy Public IP address
 4. Run ssh connection in PowerShell
-ssh -i .\.ssh\ssh-key-instance-20231005-2117.key opc@192.18.148.37
+ssh -i .\.ssh\ssh-instance-20231005-2117.key opc@192.18.148.37
 5. Stop instance
 
 6. Restart
@@ -16,17 +16,18 @@ ssh -i .\.ssh\ssh-key-instance-20231005-2117.key opc@192.18.148.37
 6.2. Open instance in Dashboard -> Compute-> Instances
 6.3. Start
 6.4. Run ssh connection in PowerShell
-ssh -i .\.ssh\ssh-key-instance-20231005-2117.key opc@192.18.148.37
+ssh -i .\.ssh\ssh-instance-20231005-2117.key opc@192.18.148.37
 6.5. Stop instance
 
 Linux command :
-hostnamectl - Description of OS
-lscpu - Display information about the CPU architecture
-top - Show the Linux processes
-df -h - Displays information about total space and available space on a file system.
-ls - Lists all the files and directories under a specified directory 
-lsblk - show hard disk size
-free -th  - check RAM 
+hostnamectl -- Description of OS
+lscpu -- Display information about the CPU architecture
+top -- Show the Linux processes
+df -h -- Displays information about total space and available space on a file system.
+ls -- Lists all the files and directories under a specified directory 
+lsblk -- show hard disk size
+free -th  -- check RAM 
+dnf list installed  -- To list the installed packages on our system
 
 mkdir src
 vi hellow.py
@@ -81,7 +82,7 @@ rm -rf /usr/local/bin/docker-compose
 10.2 Change directory mode  to give read, write, and execute to everyone. 
 chmod ugo+rwx foldername
 10.3 Copy file index.html
- scp -i .\.ssh\ssh-key-instance-20231005-2117.key index.html opc@192.18.148.37:/var/www
+ scp -i .\.ssh\ssh-instance-20231005-2117.key index.html opc@192.18.148.37:/var/www
 
 11. Docker images hub
 hub.docker.com
@@ -117,4 +118,24 @@ Desctiption: Allow incoming requests from any IP addresses to port 80 - that wil
 12.6 access to container with public IP
 
 ????? https://medium.com/oracledevs/run-always-free-docker-container-on-oracle-cloud-infrastructure-c88e36b65610
+
+------
+1.0. Create new Instances "worker1"
+1.1. Disable swap on instcances
+sudo swapoff -a
+1.2. Edit /etc/fstab and comment ## /swap
+sudo vi /etc/fstab
+1.3 Install docker
+sudo apt install docker.io -y
+ or 1.3. Install Docker CE
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install docker-ce -y
+1.4. Install curl
+??sudo apt install apt-transport-https curl -y
+sudo dnf install apt-transport-https curl -y
+??sudo apt install curl -y
+1.5. Add repository key
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+
+
 
