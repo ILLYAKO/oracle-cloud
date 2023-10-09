@@ -125,17 +125,21 @@ Desctiption: Allow incoming requests from any IP addresses to port 80 - that wil
 sudo swapoff -a
 1.2. Edit /etc/fstab and comment ## /swap
 sudo vi /etc/fstab
-1.3 Install docker
-sudo apt install docker.io -y
+??1.3 Install docker
+??sudo apt install docker.io -y
  or 1.3. Install Docker CE
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install docker-ce -y
-1.4. Install curl
+??? 1.4. Install curl
 ??sudo apt install apt-transport-https curl -y
-sudo dnf install apt-transport-https curl -y
+?? sudo dnf install apt-transport-https curl -y
+?? sudo dnf install curl -y - It was successfully updated
 ??sudo apt install curl -y
-1.5. Add repository key
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+??1.5. Add repository key
+??curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+1.4. Install Kubernetes
+sudo dnf config-manager --add-repo https://packages.kubernetes.io/yum/repos/kubernetes-el8-x86_64
+sudo dnf install kubelet kubeadm kubectl
 
 
 
