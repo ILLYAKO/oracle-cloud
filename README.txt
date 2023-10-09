@@ -111,15 +111,11 @@ IP Protocol: TCP
 Source Port Range: All
 Destination Port Range: 80
 Desctiption: Allow incoming requests from any IP addresses to port 80 - that will be mapped to the Docker Container.
-
-
-
-
 12.6 access to container with public IP
 
 ????? https://medium.com/oracledevs/run-always-free-docker-container-on-oracle-cloud-infrastructure-c88e36b65610
 
-------
+------Kubernetes
 1.0. Create new Instances "worker1"
 1.1. Disable swap on instcances
 sudo swapoff -a
